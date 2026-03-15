@@ -2,9 +2,9 @@
 
 ## Context
 
-Fulcra already exposes rich personal data through its Python client and developer APIs: authenticated access, user preferences, calendars, workouts, locations, and time-series metrics. The current client is optimized for notebooks and exploratory analysis. Personal agents need a sharper tool: deterministic JSON, fixed semantic commands, and a durable memory layer that turns raw place strings and custom metric ids into user-specific meaning. citeturn228289view0turn228289view1
+Fulcra already exposes rich personal data through its Python client and developer APIs: authenticated access, user preferences, calendars, workouts, locations, and time-series metrics. The current client is optimized for notebooks and exploratory analysis. Personal agents need a sharper tool: deterministic JSON, fixed semantic commands, and a durable memory layer that turns raw place strings and custom metric ids into user-specific meaning.
 
-The Agent Skills spec gives us a clean packaging model for that tool: a skill directory with a `SKILL.md`, optional `scripts/`, `references/`, and `assets/`, plus a progressive-disclosure structure that keeps the main skill concise and pushes detailed material into referenced files. citeturn177560view0
+The Agent Skills spec gives us a clean packaging model for that tool: a skill directory with a `SKILL.md`, optional `scripts/`, `references/`, and `assets/`, plus a progressive-disclosure structure that keeps the main skill concise and pushes detailed material into referenced files.
 
 ## Problem
 
@@ -75,7 +75,7 @@ The script carries deterministic transforms.
 
 ### JSON on stdout, diagnostics on stderr
 
-Agent Skills guidance recommends structured output, concise `--help`, and non-interactive script behavior, with data on stdout and diagnostics on stderr. citeturn475669view0turn475669view1turn475669view2
+Agent Skills guidance recommends structured output, concise `--help`, and non-interactive script behavior, with data on stdout and diagnostics on stderr.
 
 ### Files for legible state
 
@@ -84,7 +84,7 @@ Agent Skills guidance recommends structured output, concise `--help`, and non-in
 
 ### Reuse the current Fulcra auth shape
 
-Fulcra’s Python client uses Auth0 Device Authorization Flow and opens or prints a browser URL for the user to authenticate. This skill adopts that exact login pattern. citeturn228289view0turn228289view1
+Fulcra’s Python client uses Auth0 Device Authorization Flow and opens or prints a browser URL for the user to authenticate. This skill adopts that exact login pattern.
 
 ## Users and jobs
 
@@ -119,7 +119,7 @@ fulcra-personal-context/
     └── fulcra-agent-memory.template.md
 ```
 
-This matches the Agent Skills directory model and keeps `SKILL.md` short while moving implementation detail into `references/` and memory scaffolding into `assets/`. citeturn177560view0
+This matches the Agent Skills directory model and keeps `SKILL.md` short while moving implementation detail into `references/` and memory scaffolding into `assets/`.
 
 ## Runtime choice
 
@@ -129,21 +129,11 @@ Use a single self-contained Python script with inline PEP 723 metadata and run i
 uv run scripts/fulcra_agent.py <subcommand>
 ```
 
-The Agent Skills scripting guide recommends self-contained scripts with inline dependencies and shows `uv run` as the preferred way to execute them. It also notes that `uvx` is a strong one-off runner, but this skill is better served by a bundled script with an explicit command path. citeturn475669view3
+The Agent Skills scripting guide recommends self-contained scripts with inline dependencies and shows `uv run` as the preferred way to execute them. It also notes that `uvx` is a strong one-off runner, but this skill is better served by a bundled script with an explicit command path.
 
-### Dependency choice
+### Dependency
 
-Pin:
-
-- `fulcra-api==0.1.28`
-
-PyPI currently lists `fulcra-api` 0.1.28 as the latest published release.
-
-### Python version
-
-Set `requires-python = ">=3.11"` inside the script metadata.
-
-That is an explicit engineering choice for implementation simplicity and consistency.
+Fulcra python library at https://github.com/fulcradynamics/fulcra-api-python/
 
 ## Fulcra capability envelope
 
@@ -327,17 +317,3 @@ fulcra-personal-context/SKILL.md
 - repeated unknown places can accumulate as candidate places
 - confirmed places can enrich future visit results
 - custom metrics can gain human meaning over time
-
-## Advice for Codex
-
-Implement the narrow path first:
-
-1. auth persistence
-2. bootstrap
-3. sleep
-4. workouts
-5. visits
-6. checkin
-7. memory bootstrap and place-learning workflow
-
-The narrow path is the product.
