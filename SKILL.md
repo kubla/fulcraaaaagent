@@ -1,6 +1,6 @@
 ---
 name: fulcra-personal-context
-description: Retrieves and summarizes personal context from Context by Fulcra: bootstrap user info; resolve calendars and metrics; summarize last night’s sleep, recent workouts, and recent location visits; and maintain a markdown memory file of durable user facts and named places. Use when grounding an agent in a user’s recent life state or when working with Fulcra data, Context data, sleep, workouts, calendars, metrics, or location history.
+description: Retrieves and summarizes personal context from Context by Fulcra - bootstrap user info; resolve calendars and metrics; summarize last night’s sleep, recent workouts, and recent location visits; and maintain a markdown memory file of durable user facts and named places. Use when grounding an agent in a user’s recent life state or when working with Fulcra data, Context data, sleep, workouts, calendars, metrics, or location history.
 compatibility: Requires uv, Python 3.11+, and internet access to Fulcra. User will need a browser for first-time login. Runs scripts/fulcra_agent.py with uv run.
 license: Apache License 2.0
 metadata:
